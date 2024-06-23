@@ -7,12 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver Panel</title>
   <style>
-    @media only screen and (max-width: 600px) {
-      .container {
-        width: 90%;
-        margin-top: 20px;
-      }
-    }
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
@@ -81,7 +75,14 @@ button:hover {
 <body>
   <div class="container">
     <h1>Driver Profile</h1>
+    
+    
+    <div id="profile-info">
+      <h2>Profile Information</h2>
+      <div id="profile-display"></div>
+      <button id="edit-button">Edit</button>
     </div>
+  </div>
   <form id="profile-form">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
@@ -99,9 +100,9 @@ button:hover {
    
   </form>
   <script src="script.js"></script>
-  <input type="button" id="signoutbtn" value="Sign Out"> 
+  <!--<input type="button" id="signoutbtn" value="Sign Out"> 
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>-->
   
 </body>
 </html> 
