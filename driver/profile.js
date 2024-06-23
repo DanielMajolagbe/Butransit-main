@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
       profileData.age = profileForm.age.value;
       profileData.description = profileForm.description.value;
       profileData.payment = profileForm.payment.value;
+      
       updateProfileDisplay();
       profileForm.reset(); // Reset form fields
     });

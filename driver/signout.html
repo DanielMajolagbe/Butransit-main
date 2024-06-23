@@ -7,6 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver Panel</title>
   <style>
+
+img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
@@ -89,8 +96,12 @@ button:hover {
       
       <label for="payment">Payment Information:</label>
       <input type="text" id="payment" name="payment" required><br><br>
+
+      <label for="profile-pic">Profile Picture:</label>
+      <input type="file" id="profile-pic" name="profile-pic" accept="image/*"><br><br>
       
-      <button type="submit">Save</button>
+      
+      <button onclick="alert('Your Information has been saved')" type="submit">Save</button>
      
     </form>
   </div>
