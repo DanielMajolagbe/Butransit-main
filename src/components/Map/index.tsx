@@ -24,7 +24,7 @@ function Map() {
   // Example marker coordinates
   const markers = [
     {
-      title: "Ayotunde Matthew - 1 Miles from you ",
+      title: "Ayotunde Matthew - 170 Meters from you ",
       coordinate: {
         latitude: 7.6228374,
         longitude: 4.2049641,

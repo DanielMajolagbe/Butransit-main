@@ -4,11 +4,13 @@ import React from 'react';
 import LoginScreen from '../screens/LoginScreen';
 import Home from '../screens/Home';
 import Map from '../screens/Map';
+import WebViewScreen from '../screens/WebViewScreen';
 
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   Map: undefined;
+  WebViewScreen: { url: string }; // Add the type for WebViewScreen params
 };
 
 const Routes = () => {
@@ -29,6 +31,11 @@ const Routes = () => {
       <Stack.Screen
         name="Map"
         component={Map}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="WebViewScreen"
+        component={WebViewScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

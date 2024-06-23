@@ -48,14 +48,13 @@ function ChooseRide() {
           renderItem={({ item }) => (
             <TouchableOpacity style={tailwind`flex flex-row items-center mt-2`}>
               <View style={tailwind`-ml-3`}>
-                <Icon
-                  name="clock"
-                  type="feather"
-                  color="gray"
-                  size={30}
-                  tvParallaxProperties={undefined}
-                  style={tailwind`p-2 rounded-full ml-2 mt-2 `}
-                />
+              <Icon
+                    name="map-pin"
+                    type="feather"
+                    color="gray"
+                    size={24}
+                    style={tailwind`p-1 rounded-full ml-2`}
+                  />
               </View>
               <View style={tailwind`flex-1 border-b-2 border-gray-100 p-2`}>
                 <Text style={tailwind`text-base font-bold`}>{item.title}</Text>

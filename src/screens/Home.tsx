@@ -1,13 +1,13 @@
+// src/screens/Home.js
 import React, { useEffect, useState } from 'react';
 import {
   FlatList,
-  Linking,
   SafeAreaView,
   Text,
   TouchableOpacity,
   View,
   StyleSheet,
-  ScrollView, // Import ScrollView
+  ScrollView,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tailwind from 'twrnc';
@@ -15,7 +15,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
 import NavOptions from '../components/NavOptions';
-import SearchInputAutocomplete from '../components/SearchInputAutocomplete';
 import { RecentRides } from '../data/mock';
 
 const Home = () => {
@@ -37,13 +36,12 @@ const Home = () => {
     Linking.openURL(url).catch((err) => console.error('Error:', err));
   };
 
-  const handleLinkPress = () => {
-    const url = 'https://form.com';
-    Linking.openURL(url);
-  };
-
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
+  };
+
+  const handleAuthPress = () => {
+    navigation.navigate('WebViewScreen', { url: 'https://www.google.com' });
   };
 
   const themeStyles = darkMode ? darkStyles : lightStyles;
@@ -56,7 +54,7 @@ const Home = () => {
             <Text style={[{ fontSize: 35, fontWeight: 'bold' }, themeStyles.text]}>
               BuTransit
             </Text>
-           
+
             <TouchableOpacity onPress={toggleDarkMode} style={tailwind`ml-4`}>
               <Icon
                 name={darkMode ? 'sun' : 'moon'}
@@ -66,19 +64,19 @@ const Home = () => {
               />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={handleLinkPress}>
-            <View style={tailwind`p-3`}>
-              <Text style={[styles.linkText, themeStyles.text]}>Driver registration</Text>
-            </View>
-          </TouchableOpacity>
+
           <NavOptions />
         </View>
-        
+
         <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Rides🔥</Text>
         <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
           An available Driver will Respond
         </Text>
-        
+
+        <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
+          <Text style={styles.firebaseButtonText}>Authenticate with Firebase</Text>
+        </TouchableOpacity>
+
         <FlatList
           style={tailwind`flex-1 px-5`}
           data={RecentRides}
@@ -95,7 +93,7 @@ const Home = () => {
               >
                 <View style={tailwind`-ml-1.5`}>
                   <Icon
-                    name="clock"
+                    name="map-pin"
                     type="feather"
                     color="gray"
                     size={24}
@@ -108,11 +106,11 @@ const Home = () => {
                     {item.address}
                   </Text>
                 </View>
-                <TouchableOpacity onPress={() => handlePress(item.phoneNumber)}>
+                <TouchableOpacity onPress={() => handlePress(item.phoneNumber)} style={tailwind`ml-1`}>
                   <Icon
                     name="phone"
                     type="feather"
-                    color="green"
+                    color="#588157"
                     size={24}
                     style={tailwind`p-1 rounded-full ml-2`}
                   />
@@ -154,6 +152,17 @@ const styles = StyleSheet.create({
   linkText: {
     textDecorationLine: 'underline',
     textAlign: 'center',
+  },
+  firebaseButton: {
+    backgroundColor: '#4285F4',
+    padding: 10,
+    margin: 20,
+    borderRadius: 5,
+  },
+  firebaseButtonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 

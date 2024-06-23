@@ -28,7 +28,7 @@ export const CarsClasses = [
     driverInfo: 'Adaswift Transport Available for rides Outside Bowen University',
     phoneNumber: '+1234567890',
     image: require('../../assets/images/cars/UberLux.webp'),
-    price: '?Null',
+    price: 'Custom',
     roundImage: require('./man.jpg'),
   },
   {
@@ -38,7 +38,7 @@ export const CarsClasses = [
     driverInfo: 'Adaswift Transport Available for rides Outside Bowen University',
     phoneNumber: '+1234567890',
     image: require('../../assets/images/cars/UberLux.webp'),
-    price: '?Null',
+    price: 'Custom',
     roundImage: require('./man.jpg'),
   },
 ];
