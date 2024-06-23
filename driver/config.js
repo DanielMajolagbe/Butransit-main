@@ -8,3 +8,6 @@ const firebaseConfig = {
   measurementId: "G-0RCGKJC18F"
 };
 export {firebaseConfig};
+
+
+//   aeyuqdioio892euij
