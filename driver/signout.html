@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="profile.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver Panel</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-
-img {
+    img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
       margin-top: 10px;
     }
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-.container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 80%;
-  max-width: 600px;
-}
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 80%;
+      max-width: 600px;
+    }
 
+    label {
+      font-weight: bold;
+    }
 
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-label {
-  font-weight: bold;
-}
+    button {
+      background-color: #4285F4;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-input, textarea {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
+    button:hover {
+      background-color: #357ae8;
+    }
 
-button {
-  background-color: #4285F4;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-}
+    #profile-info {
+      margin-top: 20px;
+    }
 
-button:hover {
-  background-color: #357ae8;
-}
-
-#profile-info {
-  margin-top: 20px;
-}
-
-#profile-display {
-  margin-top: 10px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: left;
-}
+    #profile-display {
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -100,12 +96,30 @@ button:hover {
       <label for="profile-pic">Profile Picture:</label>
       <input type="file" id="profile-pic" name="profile-pic" accept="image/*"><br><br>
       
-      
       <button onclick="alert('Your Information has been saved')" type="submit">Save</button>
-     
     </form>
   </div>
-  
-  
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+  <!-- Firebase Configuration and Initialization -->
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBycv2aba03DLLwk5w98BakRjStUOB8LI4",
+  authDomain: "butransit-1.firebaseapp.com",
+  projectId: "butransit-1",
+  storageBucket: "butransit-1.appspot.com",
+  messagingSenderId: "574695582590",
+  appId: "1:574695582590:web:bd463917cbf4c94d7ea12f",
+  measurementId: "G-0RCGKJC18F"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script src="profile.js"></script>
 </body>
-</html> 
+</html>
