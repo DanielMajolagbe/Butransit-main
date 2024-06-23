@@ -1,46 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="profile.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Out</title>
+  <title>Profile</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body{
-      min-height: 100vh;
-      width: 100%;
-      background: #222D32; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    #signoutbtn{
-      height: 50px;
-      padding: 0 15px;
-      font-size: 17px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      outline: none;
-      color: #fff; 
-      background: #009579;
-      cursor: pointer;
-      transition: 0.4s;
-    }
-    #signoutbtn:hover{
-      background: #006653;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4285F4;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #357ae8;
+}
+
+#profile-info {
+  margin-top: 20px;
+}
+
+#profile-display {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: left;
+}
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Profile Editing</h1>
+    <form id="profile-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required><br><br>
+      
+      <label for="description">Description:</label><br>
+      <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+      
+      <label for="payment">Payment Information:</label>
+      <input type="text" id="payment" name="payment" required><br><br>
+      
+      <button type="submit">Save</button>
+    </form>
+    
+    <div id="profile-info">
+      <h2>Profile Information</h2>
+      <div id="profile-display"></div>
+      <button id="edit-button">Edit</button>
+    </div>
+  </div>
   <input type="button" id="signoutbtn" value="Sign Out">
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="page1.js" type="module"></script>
+  
 </body>
 </html>
