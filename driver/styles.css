@@ -62,9 +62,13 @@ body{
   margin-top: 15px;
   cursor: pointer;
   transition: 0.4s;
+  border-radius: 10px;
 }
 .form input.button:hover{
-  background: #002066;
+  background: #ffffff;
+  border: 1.4px solid black;
+  color: black;
+  
 }
 .signup{
   font-size: 17px;
