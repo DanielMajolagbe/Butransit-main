@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID",
-    measurementId: "YOUR_MEASUREMENT_ID"
+    apiKey: "AIzaSyBycv2aba03DLLwk5w98BakRjStUOB8LI4",
+  authDomain: "butransit-1.firebaseapp.com",
+  projectId: "butransit-1",
+  storageBucket: "butransit-1.appspot.com",
+  messagingSenderId: "574695582590",
+  appId: "1:574695582590:web:bd463917cbf4c94d7ea12f",
+  measurementId: "G-0RCGKJC18F"
 };
 export {firebaseConfig};
