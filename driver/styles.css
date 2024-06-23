@@ -9,7 +9,7 @@
 body{
   min-height: 100vh;
   width: 100%;
-  background: #222D32;
+  background: #ffffff;
 }
 .container{
   position: absolute;
@@ -55,7 +55,7 @@ body{
  }
 .form input.button{
   color: #fff;
-  background: #009579;
+  background: #000000;
   font-size: 1.2rem;
   font-weight: 500;
   letter-spacing: 1px;
@@ -64,15 +64,16 @@ body{
   transition: 0.4s;
 }
 .form input.button:hover{
-  background: #006653;
+  background: #002066;
 }
 .signup{
   font-size: 17px;
   text-align: center;
 }
 .signup a{
-  color: #009579;
+  color: #000000;
   cursor: pointer;
+  font-weight: 400px;
 }
 .signup a:hover{
   text-decoration: underline;
