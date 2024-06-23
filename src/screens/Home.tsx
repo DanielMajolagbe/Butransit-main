@@ -66,6 +66,9 @@ const Home = () => {
           </View>
 
           <NavOptions />
+          <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
+          <Text style={styles.firebaseButtonText}>Driver Panel</Text>
+        </TouchableOpacity>
         </View>
 
         <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Rides🔥</Text>
@@ -73,9 +76,7 @@ const Home = () => {
           An available Driver will Respond
         </Text>
 
-        <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
-          <Text style={styles.firebaseButtonText}>Authenticate with Firebase</Text>
-        </TouchableOpacity>
+        
 
         <FlatList
           style={tailwind`flex-1 px-5`}

@@ -5,7 +5,7 @@ export const CarsClasses = [
     title: 'Adekunle Ayomide',
     multiplier: 1,
     driverInfo: 'Cab Driver Available for rides Within Bowen University',
-    paymentInfo: 'cash',
+    paymentInfo: 'Bank Name: Zenith Bank Account Number: 2052191505 ',
     phoneNumber: '+2348101033175',
     image: require('../../assets/images/cars/UberLux.webp'),
     price: '₦750',
