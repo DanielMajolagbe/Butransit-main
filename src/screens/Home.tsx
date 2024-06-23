@@ -41,7 +41,7 @@ const Home = () => {
   };
 
   const handleAuthPress = () => {
-    navigation.navigate('WebViewScreen', { url: 'https://www.google.com' });
+    navigation.navigate('WebViewScreen', { url: 'https://butransit-driver-panel.vercel.app/' });
   };
 
   const themeStyles = darkMode ? darkStyles : lightStyles;
