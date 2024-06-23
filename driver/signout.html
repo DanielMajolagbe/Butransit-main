@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="styles.css">
-  <script defer src="profile.js"></script>
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Driver Panel</title>
   <style>
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        margin-top: 20px;
+      }
+    }
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f2f5;
@@ -95,10 +102,44 @@ button:hover {
     <button type="submit">Save</button>
    
   </form>
-  <script src="script.js"></script>
-  <input type="button" id="signoutbtn" value="Sign Out"> 
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  
+  <script>
+    // JavaScript for storing form data locally
+    const profileForm = document.getElementById('profile-form');
+    const profileDisplay = document.getElementById('profile-display');
+
+    profileForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Store form data in an object
+      const formData = {
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        description: document.getElementById('description').value,
+        payment: document.getElementById('payment').value
+      };
+
+      // Convert data to JSON and store in localStorage
+      localStorage.setItem('profileData', JSON.stringify(formData));
+
+      // Display stored data
+      displayProfile(formData);
+    });
+
+    // Function to display profile data
+    function displayProfile(data) {
+      profileDisplay.innerHTML = `
+        <p><strong>Name:</strong> ${data.name}</p>
+        <p><strong>Age:</strong> ${data.age}</p>
+        <p><strong>Description:</strong> ${data.description}</p>
+        <p><strong>Payment Information:</strong> ${data.payment}</p>
+      `;
+    }
+
+    // Check if there's existing data in localStorage
+    const storedData = localStorage.getItem('profileData');
+    if (storedData) {
+      displayProfile(JSON.parse(storedData));
+    }
+  </script>
 </body>
 </html> 
