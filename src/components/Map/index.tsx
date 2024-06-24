@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
+import { StyleSheet, View, Alert, Image } from 'react-native';
+import MapView, { Marker, Polyline } from 'react-native-maps';
 import { useDispatch, useSelector } from 'react-redux';
 
 import LocationContext from '../../context/Location/LocationContext';
@@ -18,30 +17,80 @@ function Map() {
   const mapRef = useRef<MapView>(null);
   const location = useContext(LocationContext);
   const dispatch = useDispatch();
-  const [selectedMarker, setSelectedMarker] = useState(null); // State for selected marker
+  const [selectedMarker, setSelectedMarker] = useState(null);
   const [polylineCoords, setPolylineCoords] = useState([]);
 
-  // Example marker coordinates
+  const carImage = require('./UberXL.webp'); // Import the car image
+
   const markers = [
     {
-      title: "Ayotunde Matthew - 170 Meters from you ",
+      title: "Ayotunde Matthew - 170 Meters away ",
       coordinate: {
         latitude: 7.6228374,
         longitude: 4.2049641,
       }
     },
     {
-      title: "Jonathan Johnson - 2 Miles from you",
+      title: "Adebola Samson - 2.9 km away",
+      coordinate: {
+        latitude: 7.653235,
+        longitude: 4.1231823,
+      }
+    },
+    {
+      title: "Adekunle Ayomide - 1.3Km away",
       coordinate: {
         latitude: 7.6209416,
         longitude: 4.2020455,
       }
     },
     {
-      title: "Adebola Samson - 4 Miles from you",
+      title: "Adebola Samson - 2.9 km away",
       coordinate: {
         latitude: 7.6209416,
         longitude: 4.1902892,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6229374,
+        longitude: 4.2049152,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6228457,
+        longitude: 4.2049356,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6226852,
+        longitude: 4.2049755,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6205092,
+        longitude: 4.1985634,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6249669,
+        longitude: 4.1932348,
+      }
+    },
+    {
+      title: "",
+      coordinate: {
+        latitude: 7.6248775,
+        longitude: 4.1931621,
       }
     },
   ];
@@ -64,40 +113,10 @@ function Map() {
     });
   }, [origin, destination]);
 
-  // useEffect(() => {
-  //   if (!origin || !destination) return;
-
-  //   const getTravelTime = () => {
-  //     fetch(
-  //       `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${origin.description}&destinations=${destination.description}&key=${MAPS_API_KEY}`
-  //     )
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         dispatch(setTravelTimeInfo(data.rows[0].elements[0]));
-  //       });
-  //   };
-
-  //   getTravelTime();
-  // }, [origin, destination]);
-
   const handleMarkerPress = (markerLocation) => {
     if (origin && markerLocation) {
       const originLatLng = `${origin.location.lat},${origin.location.lng}`;
       const markerLatLng = `${markerLocation.latitude},${markerLocation.longitude}`;
-
-      // fetch(
-      //   `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${originLatLng}&destinations=${markerLatLng}&key=${MAPS_API_KEY}`
-      // )
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     const distance = data.rows[0].elements[0].distance.text;
-      //     Alert.alert('Distance', `Distance to marker: ${distance}`);
-      //     setSelectedMarker(markerLocation);
-
-      //     // Update polyline coordinates to draw the line
-          
-      //   })
-      //   .catch((error) => console.error(error));
     }
   };
 
@@ -144,8 +163,110 @@ function Map() {
               }}
               identifier="destination"
               onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
             />
           )}
+
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
+          {destination?.location && (
+            <Marker
+              title={destination.description}
+              coordinate={{
+                latitude: destination.location.lat,
+                longitude: destination.location.lng,
+              }}
+              identifier="destination"
+              onPress={() => handleMarkerPress(destination.location)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }} // Center the marker
+            />
+          )}  
 
           {markers.map((marker, index) => (
             <Marker
@@ -154,6 +275,9 @@ function Map() {
               coordinate={marker.coordinate}
               identifier={`marker-${index}`}
               onPress={() => handleMarkerPress(marker.coordinate)}
+              image={carImage} 
+              style={{ width: 40, height: 40 }} // Set the size of the marker
+              anchor={{ x: 0.5, y: 0.5 }}// Use the car image for the marker
             />
           ))}
         </MapView>
