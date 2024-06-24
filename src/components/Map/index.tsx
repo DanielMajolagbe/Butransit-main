@@ -138,7 +138,7 @@ function Map() {
             <Polyline
               coordinates={polylineCoords}
               strokeColor="black"
-              strokeWidth={3}
+              strokeWidth={10}
             />
           )}
 
@@ -164,11 +164,11 @@ function Map() {
               identifier="destination"
               onPress={() => handleMarkerPress(destination.location)}
               image={carImage} 
-              style={{ width: 40, height: 40 }} // Set the size of the marker
+              style={{ width: 10, height: 10 }} // Set the size of the marker
               anchor={{ x: 0.5, y: 0.5 }} // Center the marker
             />
           )}
-
+          
           {destination?.location && (
             <Marker
               title={destination.description}

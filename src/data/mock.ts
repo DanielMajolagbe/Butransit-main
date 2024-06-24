@@ -19,7 +19,7 @@ export const CarsClasses = [
     phoneNumber: '+1234567890',
     image: require('../../assets/images/cars/UberLux.webp'),
     price: '₦5000',
-    roundImage: require('./....jpg'),
+    roundImage: require('./man.jpg'),
   },
   {
     id: 'UberLUX-789',
@@ -29,7 +29,7 @@ export const CarsClasses = [
     phoneNumber: '+1234567890',
     image: require('../../assets/images/cars/UberLux.webp'),
     price: 'Custom',
-    roundImage: require('./....jpg'),
+    roundImage: require('./man.jpg'),
   },
   {
     id: 'UberLUX-202',
@@ -39,7 +39,7 @@ export const CarsClasses = [
     phoneNumber: '+1234567890',
     image: require('../../assets/images/cars/UberLux.webp'),
     price: 'Custom',
-    roundImage: require('./....jpg'),
+    roundImage: require('./man.jpg'),
   },
 ];
 

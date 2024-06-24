@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  ScrollView,
+  ScrollView, Linking
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tailwind from 'twrnc';
