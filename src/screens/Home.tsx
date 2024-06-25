@@ -1,34 +1,49 @@
 import React, { useEffect, useState } from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-  ScrollView,
-  Linking,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { Icon } from 'react-native-elements';
-import tailwind from 'twrnc';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+import * as Linking from 'expo-linking';
 
 import NavOptions from '../components/NavOptions';
-import { RecentRides } from '../data/mock';
+import { RecentRides } from '../data/mock'; // Mock data placeholder
 
 const Home = () => {
   const navigation = useNavigation();
   const [darkMode, setDarkMode] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   useEffect(() => {
     const checkPin = async () => {
       const storedPin = await AsyncStorage.getItem('userPin');
       if (!storedPin) {
-        navigation.replace('Login');
+        navigation.replace('Login'); // Redirect to Login screen if userPin not found
       }
     };
     checkPin();
+  }, []);
+
+  useEffect(() => {
+    const handleDeepLink = async (event) => {
+      const { queryParams } = Linking.parse(event.url);
+      if (queryParams.email) {
+        setUserEmail(queryParams.email);
+      }
+    };
+
+    const getInitialUrl = async () => {
+      const initialUrl = await Linking.getInitialURL();
+      if (initialUrl) {
+        handleDeepLink({ url: initialUrl });
+      }
+    };
+
+    Linking.addEventListener('url', handleDeepLink);
+    getInitialUrl();
+
+    return () => {
+      Linking.removeEventListener('url', handleDeepLink);
+    };
   }, []);
 
   const handlePress = (phoneNumber) => {
@@ -41,99 +56,90 @@ const Home = () => {
   };
 
   const handleAuthPress = () => {
+    // Replace with your driver panel URL or navigation logic
     navigation.navigate('WebViewScreen', { url: 'https://butransit-driver-panel.vercel.app/' });
   };
 
   const handleProfilePress = () => {
     // Replace with your profile URL or navigation logic
-    navigation.navigate('WebViewScreen', { url: 'https://your-profile-url.com/' });
+    navigation.navigate('WebViewScreen', { url: 'https://667af7a19da3d03a4df59e63--comforting-buttercream-a0ff2b.netlify.app/#' });
   };
 
   const themeStyles = darkMode ? darkStyles : lightStyles;
 
   return (
-    <SafeAreaView style={[tailwind`w-full h-full`, themeStyles.background]}>
-      <View style={tailwind`flex-1`}>
-        <View style={tailwind`p-5`}>
-          <View style={tailwind`flex-row justify-between items-center`}>
-            <Text style={[{ fontSize: 35, fontWeight: 'bold' }, themeStyles.text]}>
-              BuTransit
-            </Text>
-
-            <TouchableOpacity onPress={toggleDarkMode} style={tailwind`ml-26`}>
-              <Icon
-                name={darkMode ? 'sun' : 'moon'}
-                type="feather"
-                color={darkMode ? 'yellow' : 'black'}
-                size={30}
-              />
-            </TouchableOpacity>
-
-            {/* Profile Button */}
-            <TouchableOpacity onPress={handleProfilePress} style={tailwind`ml-4`}>
-              <Icon
-                name="user"
-                type="feather"
-                color={themeStyles.text.color}
-                size={30}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <NavOptions />
-          <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
-            <Text style={styles.firebaseButtonText}>Driver Panel</Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Rides🔥</Text>
-        <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
-          An available Driver will Respond
-        </Text>
-
-        <FlatList
-          style={tailwind`flex-1 px-5`}
-          data={RecentRides}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <ScrollView
-              style={tailwind`mt-2`}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            >
-              <TouchableOpacity 
-                style={tailwind`flex-row items-center`} 
-                onPress={() => handlePress(item.phoneNumber)}
-              >
-                <View style={tailwind`-ml-1.5`}>
-                  <Icon
-                    name="map-pin"
-                    type="feather"
-                    color="gray"
-                    size={24}
-                    style={tailwind`p-1 rounded-full ml-2`}
-                  />
-                </View>
-                <View style={tailwind`flex-1 border-b border-gray-100 py-1`}>
-                  <Text style={[tailwind`text-base font-bold`, themeStyles.text]}>{item.title}</Text>
-                  <Text style={[tailwind`text-sm`, themeStyles.subText]}>
-                    {item.address}
-                  </Text>
-                </View>
-                <TouchableOpacity onPress={() => handlePress(item.phoneNumber)} style={tailwind`ml-1`}>
-                  <Icon
-                    name="phone"
-                    type="feather"
-                    color="#588157"
-                    size={24}
-                    style={tailwind`p-1 rounded-full ml-2`}
-                  />
-                </TouchableOpacity>
-              </TouchableOpacity>
-            </ScrollView>
-          )}
-        />
+    <SafeAreaView style={[styles.container, themeStyles.background]}>
+      <View style={styles.headerContainer}>
+        <Text style={[styles.headerText, themeStyles.text]}>BuTransit</Text>
+        <TouchableOpacity onPress={toggleDarkMode} style={styles.darkModeButton}>
+          <Icon
+            name={darkMode ? 'sun' : 'moon'}
+            type="feather"
+            color={darkMode ? 'yellow' : 'black'}
+            size={30}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleProfilePress} style={styles.profileButton}>
+          <Icon
+            name="user"
+            type="feather"
+            color={themeStyles.text.color}
+            size={30}
+          />
+        </TouchableOpacity>
       </View>
+
+      <NavOptions />
+
+      <TouchableOpacity onPress={handleAuthPress} style={styles.driverPanelButton}>
+        <Text style={styles.driverPanelButtonText}>Driver Panel</Text>
+      </TouchableOpacity>
+
+      <Text style={[styles.quickRidesText, themeStyles.text]}>Quick Rides🔥</Text>
+      <Text style={styles.quickRidesDescription}>An available Driver will Respond</Text>
+
+      <FlatList
+        style={styles.flatListContainer}
+        data={RecentRides} // Replace with your data source
+        keyExtractor={(item) => item.id.toString()} // Ensure key is string type
+        renderItem={({ item }) => (
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <TouchableOpacity
+              style={styles.itemContainer}
+              onPress={() => handlePress(item.phoneNumber)}
+            >
+              <View style={styles.iconContainer}>
+                <Icon
+                  name="map-pin"
+                  type="feather"
+                  color="gray"
+                  size={24}
+                  style={styles.mapPinIcon}
+                />
+              </View>
+              <View style={styles.textContainer}>
+                <Text style={[styles.itemTitle, themeStyles.text]}>{item.title}</Text>
+                <Text style={[styles.itemAddress, themeStyles.subText]}>{item.address}</Text>
+              </View>
+              <TouchableOpacity
+                onPress={() => handlePress(item.phoneNumber)}
+                style={styles.phoneIconContainer}
+              >
+                <Icon
+                  name="phone"
+                  type="feather"
+                  color="#588157"
+                  size={24}
+                  style={styles.phoneIcon}
+                />
+              </TouchableOpacity>
+            </TouchableOpacity>
+          </ScrollView>
+        )}
+      />
+      {userEmail ? (
+        <Text style={[styles.userEmailText, themeStyles.text]}>Welcome, {userEmail}</Text>
+      ) : null}
     </SafeAreaView>
   );
 };
@@ -163,19 +169,95 @@ const darkStyles = StyleSheet.create({
 });
 
 const styles = StyleSheet.create({
-  linkText: {
-    textDecorationLine: 'underline',
-    textAlign: 'center',
+  container: {
+    flex: 1,
   },
-  firebaseButton: {
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  headerText: {
+    fontSize: 35,
+    fontWeight: 'bold',
+  },
+  darkModeButton: {
+    marginLeft: 26,
+  },
+  profileButton: {
+    marginLeft: 4,
+  },
+  driverPanelButton: {
     backgroundColor: '#4285F4',
     padding: 10,
-    margin: 20,
+    marginHorizontal: 20,
+    marginVertical: 10,
     borderRadius: 5,
   },
-  firebaseButtonText: {
+  driverPanelButtonText: {
     color: 'white',
     textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  quickRidesText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  quickRidesDescription: {
+    textAlign: 'center',
+    marginVertical: 5,
+  },
+  flatListContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 2,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+    paddingVertical: 10,
+  },
+  iconContainer: {
+    marginLeft: -1.5,
+  },
+  mapPinIcon: {
+    padding: 1,
+    borderRadius: 12,
+    marginLeft: 2,
+  },
+  textContainer: {
+    flex: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+    paddingVertical: 8,
+  },
+  itemTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  itemAddress: {
+    fontSize: 14,
+    color: 'gray',
+  },
+  phoneIconContainer: {
+    marginLeft: 1,
+  },
+  phoneIcon: {
+    padding: 1,
+    borderRadius: 12,
+    marginLeft: 2,
+  },
+  userEmailText: {
+    textAlign: 'center',
+    marginTop: 10,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 });
