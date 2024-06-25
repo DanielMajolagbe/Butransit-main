@@ -46,7 +46,7 @@ const Home = () => {
 
   const handleProfilePress = () => {
     // Replace with your profile URL or navigation logic
-    navigation.navigate('WebViewScreen', { url: 'https://667afdc87ae55504fa7e112a--dazzling-pasca-c2ed0b.netlify.app/' });
+    navigation.navigate('WebViewScreen', { url: 'https://667afe91f69c400ca9ee7446--dynamic-bonbon-1ac102.netlify.app/' });
   };
 
   const themeStyles = darkMode ? darkStyles : lightStyles;

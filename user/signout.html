@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Back to Expo App</title>
+    <title>Close Browser</title>
     <style>
         body {
             display: flex;
@@ -14,7 +14,7 @@
             background-color: #f0f0f0;
         }
 
-        .back-button {
+        .close-button {
             background-color: black;
             color: white;
             border: none;
@@ -29,11 +29,11 @@
     </style>
 </head>
 <body>
-    <button class="back-button" id="expo-button">Back to App</button>
+    <button class="close-button" id="close-button">Back to App</button>
 
     <script>
-        document.getElementById('expo-button').onclick = function () {
-            history.go(-2);
+        document.getElementById('close-button').onclick = function () {
+            window.close();
         }
     </script>
 </body>
