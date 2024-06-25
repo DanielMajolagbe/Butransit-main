@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in with Google</title>
+    <style>
+        #googleSignInButton {
+            display: inline-block;
+            background: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #welcomeMessage {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var name = profile.getName();
+            var id_token = googleUser.getAuthResponse().id_token;
+            localStorage.setItem('userName', name);
+            localStorage.setItem('idToken', id_token);
+            window.location.href = '/callback';
+        }
+
+        function renderButton() {
+            gapi.signin2.render('googleSignInButton', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'dark',
+                'onsuccess': onSignIn,
+                'onfailure': function(error) { console.log(error); }
+            });
+        }
+
+        function initClient() {
+            gapi.load('auth2', function() {
+                gapi.auth2.init({
+                    client_id: '24683863824-ecni8lbc8n8sjk6apfjo6rn5kg1o4tlp.apps.googleusercontent.com'
+                }).then(renderButton);
+            });
+        }
+    </script>
+</head>
+<body onload="initClient()">
+    <div id="googleSignInButton">Sign in with Google</div>
+</body>
+</html>

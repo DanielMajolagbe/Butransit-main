@@ -1,4 +1,3 @@
-// src/screens/Home.js
 import React, { useEffect, useState } from 'react';
 import {
   FlatList,
@@ -7,7 +6,8 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
-  ScrollView, Linking
+  ScrollView,
+  Linking,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tailwind from 'twrnc';
@@ -44,6 +44,11 @@ const Home = () => {
     navigation.navigate('WebViewScreen', { url: 'https://butransit-driver-panel.vercel.app/' });
   };
 
+  const handleProfilePress = () => {
+    // Replace with your profile URL or navigation logic
+    navigation.navigate('WebViewScreen', { url: 'https://your-profile-url.com/' });
+  };
+
   const themeStyles = darkMode ? darkStyles : lightStyles;
 
   return (
@@ -55,7 +60,7 @@ const Home = () => {
               BuTransit
             </Text>
 
-            <TouchableOpacity onPress={toggleDarkMode} style={tailwind`ml-4`}>
+            <TouchableOpacity onPress={toggleDarkMode} style={tailwind`ml-26`}>
               <Icon
                 name={darkMode ? 'sun' : 'moon'}
                 type="feather"
@@ -63,20 +68,28 @@ const Home = () => {
                 size={30}
               />
             </TouchableOpacity>
+
+            {/* Profile Button */}
+            <TouchableOpacity onPress={handleProfilePress} style={tailwind`ml-4`}>
+              <Icon
+                name="user"
+                type="feather"
+                color={themeStyles.text.color}
+                size={30}
+              />
+            </TouchableOpacity>
           </View>
 
           <NavOptions />
           <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
-          <Text style={styles.firebaseButtonText}>Driver Panel</Text>
-        </TouchableOpacity>
+            <Text style={styles.firebaseButtonText}>Driver Panel</Text>
+          </TouchableOpacity>
         </View>
 
         <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Rides🔥</Text>
         <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
           An available Driver will Respond
         </Text>
-
-        
 
         <FlatList
           style={tailwind`flex-1 px-5`}

@@ -51,7 +51,7 @@ export const RecentRides = [
     id: '1',
     title: 'Within Bowen University',
     address: 'Price: ₦750 -> Call Available Driver',
-    phoneNumber: '09048289402'
+    phoneNumber: '08037603294'
   },
   {
     id: '2',
