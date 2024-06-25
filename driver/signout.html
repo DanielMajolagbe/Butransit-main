@@ -1,32 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to Expo App</title>
-    <style>
-        .redirect-button {
-            background-color: #6200EE;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="profile.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Driver Panel</title>
+  <style>
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        margin-top: 20px;
+      }
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      margin: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 80%;
+      height: 100vh;
+      max-width: 600px;
+    }
+    label {
+      color: black;
+    }
+    input, textarea {
+      width: 50%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #4285F4;
+      color: #fff;
+      border: none;
+      padding: 15px 60px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #357ae8;
+    }
+    #profile-info {
+      margin-top: 20px;
+    }
+    #profile-display {
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
-    <button class="redirect-button" id="expo-button">Open App</button>
-
-    <script>
-        document.getElementById('expo-button').onclick = function () {
-            window.location.href = 'exp://192.168.1.100:19000';
-        }
-    </script>
+  <div class="container">
+   
+    <div id="profile-info">
+      <h2>Driver Registration Page</h2>
+      <div id="profile-display"></div>
+      <button id="edit-button">Edit</button>
+    </div>
+    <form id="profile-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required><br><br>
+      <label for="description">Description</label><br>
+      <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+      <label for="payment">Payment Information</label>
+      <input type="text" id="payment" name="payment" required><br><br>
+      <label for="profile-pic">Profile Picture:</label>
+      <input type="file" id="profile-pic" name="profile-pic" accept="image/*"><br><br>
+      <button onclick="alert('Your Information has been saved')" type="submit">Save</button>
+    </form>
+    
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+  <script src="profile.js"></script>
 </body>
 </html>

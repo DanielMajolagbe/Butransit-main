@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirect to Expo App</title>
+    <title>Back to Expo App</title>
     <style>
-        .redirect-button {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .back-button {
             background-color: black;
             color: white;
             border: none;
@@ -14,18 +23,17 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
             cursor: pointer;
             border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <button class="redirect-button" id="expo-button">Open App</button>
+    <button class="back-button" id="expo-button">Back to App</button>
 
     <script>
         document.getElementById('expo-button').onclick = function () {
-            window.location.href = 'exp://172.20.10.4:8081';
+            history.back();
         }
     </script>
 </body>
