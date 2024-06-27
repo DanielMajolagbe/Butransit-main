@@ -7,7 +7,7 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Linking,
+  Linking, Button,
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import tailwind from 'twrnc';
@@ -90,6 +90,7 @@ const Home = () => {
         <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
           An available Driver will Respond
         </Text>
+        
 
         <FlatList
           style={tailwind`flex-1 px-5`}

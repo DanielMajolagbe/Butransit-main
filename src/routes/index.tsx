@@ -5,12 +5,14 @@ import LoginScreen from '../screens/LoginScreen';
 import Home from '../screens/Home';
 import Map from '../screens/Map';
 import WebViewScreen from '../screens/WebViewScreen';
+import PriceCalculator from '../components/PriceCalculator'; // Adjust the import path if necessary
 
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
   Map: undefined;
-  WebViewScreen: { url: string }; // Add the type for WebViewScreen params
+  WebViewScreen: { url: string };
+  PriceCalculator: undefined; // Add PriceCalculator to the type definition
 };
 
 const Routes = () => {
@@ -37,6 +39,11 @@ const Routes = () => {
         name="WebViewScreen"
         component={WebViewScreen}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="PriceCalculator"
+        component={PriceCalculator}
+        options={{ headerShown: false }} // Adjust headerShown option as necessary
       />
     </Stack.Navigator>
   );

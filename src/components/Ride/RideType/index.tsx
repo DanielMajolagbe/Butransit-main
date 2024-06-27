@@ -8,7 +8,7 @@ import {
   View,
   Modal,
   StyleSheet,
-  Linking,
+  Linking, Button
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
@@ -22,6 +22,7 @@ function RideType() {
   const navigation = useNavigation();
   const [selected, setSelected] = React.useState<typeof CarsClasses[0] | null>(null);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [faqModalVisible, setFaqModalVisible] = React.useState(false);
   const travelTime = useSelector(selectTravelTimeInfo);
 
   const handleChoosePress = () => {
@@ -56,6 +57,18 @@ function RideType() {
           />
         </TouchableOpacity>
         <Text style={tailwind`text-lg font-bold`}>Available Drivers</Text>
+        <TouchableOpacity
+          style={tailwind`absolute right-5`}
+          onPress={() => setFaqModalVisible(true)}
+        >
+          <Icon
+            name="question"
+            type="font-awesome"
+            color="black"
+            size={25}
+            tvParallaxProperties={undefined}
+          />
+        </TouchableOpacity>
       </View>
       <View style={tailwind`flex-1`}>
         <FlatList
@@ -158,6 +171,36 @@ function RideType() {
                 <Text style={styles.closeButtonText}>Close</Text>
               </TouchableOpacity>
               
+            </View>
+          </View>
+        </Modal>
+      )}
+
+      {faqModalVisible && (
+        <Modal
+          transparent={true}
+          animationType="slide"
+          visible={faqModalVisible}
+          onRequestClose={() => setFaqModalVisible(false)}
+        >
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContainer}>
+              <Text style={styles.modalTitle}>Note</Text>
+              <Text style={styles.modalText}>
+                Rides within Bowen: ₦750
+                <View>
+                  <Button
+                      title="External Trip Price Calculator"
+                       onPress={() => navigation.navigate('PriceCalculator')}
+                   />
+                </View>
+              </Text>
+              <TouchableOpacity
+                style={styles.closeButton}
+                onPress={() => setFaqModalVisible(false)}
+              >
+                <Text style={styles.closeButtonText}>Close</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </Modal>

@@ -35,7 +35,7 @@ function ChooseRide() {
         />
       </TouchableOpacity>
       <Text style={tailwind`text-center py-3 text-xl font-bold`}>
-        Prices
+        Rides
       </Text>
       <KeyboardAvoidingView
         style={tailwind`flex-1`}
