@@ -49,42 +49,39 @@ export type RecentRidesType = typeof RecentRides[0];
 export const RecentRides = [
   {
     id: '1',
-    title: 'Within Bowen University',
-    address: 'Price: ₦750 -> Call Available Driver',
-    phoneNumber: '08037603294'
+    title: 'A',
+    phoneNumber: '08037603294',
   },
   {
     id: '2',
-    title: 'Bowen - Iwo Park',
-    address: 'Find Driver',
-    phoneNumber: '08037603294'
+    title: 'B',
+    phoneNumber: '08143273391',
   },
   
   {
     id: '3',
-    title: 'Bowen - Ibadan',
-    address: 'Find Driver',
-    phoneNumber: '08037603294'
+    title: 'C',
+    phoneNumber: '08109086264',
   },
   {
     id: '4',
-    title: 'Bowen - Lagos',
-    address: 'Find Driver',
+    title: 'D',
+    phoneNumber: '09039321177',
   },
   {
     id: '5',
-    title: 'Bowen - Ekiti',
-    address: 'Find Driver',
+    title: 'E',
+    phoneNumber: '08137185070',
   },
   {
     id: '6',
-    title: 'Bowen - Abuja',
-    address: 'Find Driver',
+    title: 'F',
+    phoneNumber: '09161360046',
   },
   {
     id: '7',
-    title: 'Custom Ride',
-    address: 'Find Driver',
+    title: 'G',
+    phoneNumber: '08167800650',
   },
 
 ];

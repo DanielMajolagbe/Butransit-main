@@ -86,7 +86,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
 
-        <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Rides🔥</Text>
+        <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Available Drivers🔥</Text>
         <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
           An available Driver will Respond
         </Text>
