@@ -41,7 +41,7 @@ const Home = () => {
   };
 
   const handleAuthPress = () => {
-    navigation.navigate('WebViewScreen', { url: 'https://butransit-driver-panel.vercel.app/' });
+    navigation.navigate('WebViewScreen', { url: 'https://docs.google.com/forms/d/e/1FAIpQLSey8ccp9O0aS27hEQ1g04tGWcrhsi88QO7RLFhwUp2N370uRA/viewform?usp=sf_link' });
   };
 
   const handleProfilePress = () => {
@@ -82,11 +82,11 @@ const Home = () => {
 
           <NavOptions />
           <TouchableOpacity onPress={handleAuthPress} style={styles.firebaseButton}>
-            <Text style={styles.firebaseButtonText}>Driver Panel</Text>
+            <Text style={styles.firebaseButtonText}>Become a Driver</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Available Drivers🔥</Text>
+        <Text style={[{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }, themeStyles.text]}>Quick Ride🔥</Text>
         <Text style={{ textAlign: 'center', marginTop: 5, marginBottom: 20 }}>
           An available Driver will Respond
         </Text>

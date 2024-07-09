@@ -56,7 +56,7 @@ function RideType() {
             tvParallaxProperties={undefined}
           />
         </TouchableOpacity>
-        <Text style={tailwind`text-lg font-bold`}>Available Drivers</Text>
+        <Text style={tailwind`text-lg font-bold`}>Featured Drivers</Text>
         <TouchableOpacity
           style={tailwind`absolute right-5`}
           onPress={() => setFaqModalVisible(true)}
