@@ -25,7 +25,7 @@ function ChooseRide() {
   return (
     <View style={tailwind`flex-1 bg-white p-5`}>
       <View style={tailwind`flex self-center w-7 h-1 bg-gray-200 rounded-full`} />
-      <TouchableOpacity style={tailwind`absolute left-8 py-8`} onPress={() => navigation.navigate('Home')}>
+      <TouchableOpacity style={tailwind`absolute left-6 py-4`} onPress={() => navigation.navigate('Home')}>
         <Icon
           name="arrow-left"
           type="feather"
