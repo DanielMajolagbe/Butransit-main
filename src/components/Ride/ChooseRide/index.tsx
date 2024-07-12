@@ -17,7 +17,7 @@ import { RecentRides } from '../../../data/mock';
 function ChooseRide() {
   const navigation = useNavigation();
 
-  const handlePress = (phoneNumber) => {
+  const handlePress = (phoneNumber: string) => {
     const url = `tel:${phoneNumber}`;
     Linking.openURL(url).catch((err) => console.error('Error:', err));
   };
@@ -31,7 +31,7 @@ function ChooseRide() {
           type="feather"
           color="black"
           size={30}
-          tvParallaxProperties={undefined}
+        
         />
       </TouchableOpacity>
       <Text style={tailwind`text-center py-3 text-xl font-bold`}>
@@ -59,7 +59,7 @@ function ChooseRide() {
               <View style={tailwind`flex-1 border-b-2 border-gray-100 p-2`}>
                 <Text style={tailwind`text-base font-bold`}>{item.title}</Text>
                 <Text style={tailwind`text-sm text-gray-500`}>
-                  {item.address}
+                  {item.phoneNumber}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -75,7 +75,7 @@ function ChooseRide() {
           type="material"
           color="white"
           size={20}
-          tvParallaxProperties={undefined}
+          
         />
         <Text style={tailwind`text-center text-white text-lg font-medium ml-3`}>
           Ride
