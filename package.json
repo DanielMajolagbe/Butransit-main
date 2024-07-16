@@ -21,7 +21,7 @@
     "@types/react": "~18.2.79",
     "axios": "^1.7.2",
     "babel-plugin-dotenv-import": "^3.0.1",
-    "expo": "~51.0.17",
+    "expo": "^51.0.20",
     "expo-constants": "~16.0.2",
     "expo-location": "~17.0.1",
     "expo-status-bar": "~1.12.1",
