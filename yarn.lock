@@ -3770,6 +3770,7 @@ expo-status-bar@~1.12.1:
   integrity sha512-/t3xdbS8KB0prj5KG5w7z+wZPFlPtkgs95BsmrP/E7Q0xHXTcDcQ6Cu2FkFuRM+PKTb17cJDnLkawyS5vDLxMA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 expo-web-browser@12.1.1:
   version "12.1.1"
   resolved "https://registry.npmjs.org/expo-web-browser/-/expo-web-browser-12.1.1.tgz"
@@ -3780,6 +3781,8 @@ expo-web-browser@12.1.1:
 
 expo@^51.0.20:
 =======
+=======
+>>>>>>> origin/main
 expo@~51.0.17:
 >>>>>>> c994930c753311a83b72957538872e8ac89d1e37
   version "51.0.20"
@@ -7796,8 +7799,11 @@ wonka@^4.0.14:
   integrity sha512-U0IUQHKXXn6PFo9nqsHphVCE5m3IntqZNB9Jjn7EB1lrR7YTDY3YWgFvEvwniTzXSvOH/XMzAZaIfJF/LvHYXg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
 =======
+=======
+>>>>>>> origin/main
 wonka@^6.3.2:
   version "6.3.4"
   resolved "https://registry.yarnpkg.com/wonka/-/wonka-6.3.4.tgz#76eb9316e3d67d7febf4945202b5bdb2db534594"
